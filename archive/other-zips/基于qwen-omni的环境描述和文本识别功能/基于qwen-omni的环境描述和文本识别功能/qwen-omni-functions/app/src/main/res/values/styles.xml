@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- 1. 基础应用主题（匹配Manifest中的android:theme="@style/Theme.QwenOmniDemo"） -->
+    <style name="Theme.QwenOmniDemo" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- 主色调（适配视障用户的高辨识度颜色） -->
+        <item name="colorPrimary">@color/purple_600</item>
+        <item name="colorPrimaryDark">@color/purple_800</item>
+        <item name="colorAccent">@color/teal_400</item>
+
+        <!-- 窗口基础样式（无标题栏，避免遮挡相机预览） -->
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen" tools:targetApi="jelly_bean">true</item>
+
+        <!-- 无障碍优化：默认大字体、高对比度文本 -->
+        <item name="android:textSize">18sp</item> <!-- 比默认大2sp，提升可读性 -->
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/gray_500</item>
+
+        <!-- 按钮样式（适配语音播报控制按钮） -->
+        <item name="buttonStyle">@style/Widget.QwenOmniDemo.Button</item>
+    </style>
+
+    <!-- 2. 自定义按钮样式（用于“开始识别”“暂停播报”等交互控件） -->
+    <style name="Widget.QwenOmniDemo.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">56dp</item> <!-- 增大按钮高度，便于触摸 -->
+        <item name="android:minWidth">120dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="cornerRadius">28dp</item> <!-- 圆角设计，提升视觉友好度 -->
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- 3. 弹窗样式（用于权限申请提示、识别结果弹窗） -->
+    <style name="Theme.QwenOmniDemo.Dialog" parent="Theme.MaterialComponents.Dialog">
+        <item name="android:windowBackground">@drawable/rounded_dialog_bg</item> <!-- 圆角背景 -->
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">24dp</item>
+    </style>
+</resources>

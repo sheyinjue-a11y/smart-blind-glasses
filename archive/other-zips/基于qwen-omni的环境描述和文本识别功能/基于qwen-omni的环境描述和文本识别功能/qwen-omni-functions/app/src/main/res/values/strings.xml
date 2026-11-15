@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 1. 应用名称（匹配Manifest中的android:label） -->
+    <string name="app_name">视障辅助眼镜</string>
+
+    <!-- 2. 权限申请提示（相机/网络权限，用户授权时显示） -->
+    <string name="permission_camera_hint">需要相机权限以获取环境图像，用于障碍物识别和文字识别</string>
+    <string name="permission_internet_hint">需要网络权限以连接云端Qwen-Omni模型，提供环境描述</string>
+
+    <!-- 3. 功能提示文本（视障用户语音播报的固定提示） -->
+    <string name="qwen_omni_loading">正在分析环境，请稍候...</string>
+    <string name="midas_obstacle_warn">检测到近距离障碍物，请小心绕行</string>
+    <string name="weak_network_switch">网络较弱，已切换至本地识别模式</string>
+</resources>

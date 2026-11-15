@@ -1,0 +1,16 @@
+# Dependencies, build output and local machine state
+.env
+.env.*
+!.env.example
+**/node_modules/
+**/.venv/
+**/__pycache__/
+**/.dart_tool/
+**/.gradle/
+**/build/
+**/dist/
+**/local.properties
+.resource-downloads/
+downloads/
+*.log
+*.lnk

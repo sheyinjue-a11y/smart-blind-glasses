@@ -1,0 +1,103 @@
+<svg viewBox="0 0 1000 750" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg { fill: #1E1E2E; }
+    .board { fill: #282A36; stroke: #6272A4; stroke-width: 2; rx: 8; }
+    .highlight-board { fill: #282A36; stroke: #50FA7B; stroke-width: 3; rx: 8; filter: drop-shadow(0 0 10px rgba(80,250,123,0.3));}
+    .pin { fill: #F1FA8C; }
+    .text { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; fill: #F8F8F2; font-size: 14px; }
+    .text-sm { font-family: 'Segoe UI', sans-serif; fill: #6272A4; font-size: 12px; }
+    .title { font-family: 'Segoe UI', sans-serif; font-size: 28px; font-weight: bold; fill: #8BE9FD; }
+    .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 18px; fill: #FFB86C; font-weight: bold; }
+    .line { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; transition: all 0.2s; }
+    .line:hover { stroke-width: 6; filter: drop-shadow(0 0 8px currentColor); cursor: pointer; }
+    
+    /* 线条颜色定义 - 采用更亮眼的霓虹色系 */
+    .pwr-red { stroke: #FF5555; }
+    .pwr-gnd { stroke: #BFBFBF; }
+    .i2c-sda { stroke: #8BE9FD; }
+    .i2c-scl { stroke: #F1FA8C; }
+    .i2s-lrc { stroke: #FFB86C; }
+    .i2s-bck { stroke: #BD93F9; }
+    .i2s-din { stroke: #FF79C6; }
+  </style>
+
+  <rect width="1000" height="750" class="bg" />
+  
+  <text x="500" y="50" class="title" text-anchor="middle">⚡ 桌面调试期接线图 (无电池安全模式) ⚡</text>
+  <rect x="250" y="70" width="500" height="40" rx="5" fill="#FF5555" fill-opacity="0.2" stroke="#FF5555" stroke-width="1"/>
+  <text x="500" y="95" class="subtitle" text-anchor="middle" fill="#FF5555">⚠ 警告：此阶段请勿连接电池及任何电源开关，防止桌面短路！</text>
+
+  <g transform="translate(450, 130)">
+    <rect x="35" y="0" width="30" height="50" fill="#44475A" rx="3"/>
+    <rect x="40" y="50" width="20" height="15" fill="#8BE9FD" rx="2"/>
+    <text x="50" y="-10" class="text" font-weight="bold" text-anchor="middle" fill="#50FA7B">Type-C 数据线 连接电脑</text>
+    <path d="M 50 0 L 50 -30" stroke="#44475A" stroke-width="6" fill="none" stroke-dasharray="4 2"/>
+  </g>
+
+  <rect x="30" y="590" width="180" height="130" class="board" fill="#191A21"/>
+  <text x="40" y="615" class="text" font-weight="bold" fill="#FFF">图例 / Legend:</text>
+  <line x1="40" y1="635" x2="70" y2="635" class="line pwr-red"/><text x="80" y="640" class="text-sm" fill="#FFF">电源 (5V / 3V3)</text>
+  <line x1="40" y1="655" x2="70" y2="655" class="line pwr-gnd"/><text x="80" y="660" class="text-sm" fill="#FFF">地线 (GND)</text>
+  <line x1="40" y1="675" x2="70" y2="675" class="line i2c-sda"/><text x="80" y="680" class="text-sm" fill="#FFF">I2C 传感器数据</text>
+  <line x1="40" y1="695" x2="70" y2="695" class="line i2s-lrc"/><text x="80" y="700" class="text-sm" fill="#FFF">I2S 音频数据</text>
+
+  <g id="wiring">
+    <path class="line pwr-red" d="M 270 470 L 450 470 L 450 350 L 530 350" /> <path class="line pwr-gnd" d="M 270 490 L 470 490 L 470 320 L 530 320" /> <path class="line i2c-sda" d="M 270 510 L 320 510 L 320 410 L 370 410" /> <path class="line i2c-scl" d="M 270 530 L 300 530 L 300 440 L 370 440" /> <path class="line pwr-red" d="M 680 470 L 610 470 L 610 290 L 530 290" /> <path class="line pwr-gnd" d="M 680 490 L 590 490 L 590 320 L 530 320" /> <path class="line i2s-lrc" d="M 680 510 L 680 600 L 220 600 L 220 290 L 370 290" /> <path class="line i2s-bck" d="M 680 530 L 680 620 L 200 620 L 200 320 L 370 320" /> <path class="line i2s-din" d="M 680 550 L 680 640 L 180 640 L 180 350 L 370 350" /> <path class="line pwr-red" d="M 850 490 L 800 490" /> <path class="line pwr-gnd" d="M 850 530 L 800 530" /> </g>
+
+  <g transform="translate(350, 190)">
+    <rect width="200" height="300" class="highlight-board" />
+    <text x="100" y="40" class="text" font-weight="bold" font-size="18" text-anchor="middle" fill="#50FA7B">XIAO ESP32S3 Sense</text>
+    <rect x="30" y="60" width="140" height="90" rx="4" fill="#191A21" stroke="#44475A"/>
+    <text x="100" y="100" class="text-sm" text-anchor="middle" fill="#6272A4">自带摄像头/麦克风已就绪</text>
+
+    <circle cx="20" cy="100" r="6" class="pin"/><text x="35" y="105" class="text">D0 (LRC)</text>
+    <circle cx="20" cy="130" r="6" class="pin"/><text x="35" y="135" class="text">D1 (BCLK)</text>
+    <circle cx="20" cy="160" r="6" class="pin"/><text x="35" y="165" class="text">D2 (DIN)</text>
+    <circle cx="20" cy="190" r="6" class="pin"/><text x="35" y="195" class="text">D3</text>
+    <circle cx="20" cy="220" r="6" class="pin"/><text x="35" y="225" class="text">D4 (SDA)</text>
+    <circle cx="20" cy="250" r="6" class="pin"/><text x="35" y="255" class="text">D5 (SCL)</text>
+
+    <circle cx="180" cy="100" r="6" class="pin"/><text x="165" y="105" class="text" text-anchor="end" fill="#FF5555" font-weight="bold">5V (输出)</text>
+    <circle cx="180" cy="130" r="6" class="pin"/><text x="165" y="135" class="text" text-anchor="end" fill="#BFBFBF" font-weight="bold">GND</text>
+    <circle cx="180" cy="160" r="6" class="pin"/><text x="165" y="165" class="text" text-anchor="end" fill="#FF5555" font-weight="bold">3V3 (输出)</text>
+    
+    <g transform="translate(60, 275)">
+        <rect x="0" y="0" width="80" height="20" fill="#282A36"/>
+        <text x="40" y="15" class="text-sm" text-anchor="middle" fill="#FF5555">❌ 底部焊盘暂不使用</text>
+    </g>
+  </g>
+
+  <g transform="translate(150, 430)">
+    <rect width="120" height="130" class="board"/>
+    <text x="60" y="25" class="text" font-weight="bold" text-anchor="middle">ICM42688</text>
+    <text x="60" y="45" class="text-sm" text-anchor="middle">姿态传感器</text>
+    <circle cx="120" cy="40" r="5" class="pin"/><text x="105" y="45" class="text" text-anchor="end">VCC</text>
+    <circle cx="120" cy="60" r="5" class="pin"/><text x="105" y="65" class="text" text-anchor="end">GND</text>
+    <circle cx="120" cy="80" r="5" class="pin"/><text x="105" y="85" class="text" text-anchor="end">SDA</text>
+    <circle cx="120" cy="100" r="5" class="pin"/><text x="105" y="105" class="text" text-anchor="end">SCL</text>
+  </g>
+
+  <g transform="translate(680, 430)">
+    <rect width="120" height="150" class="board"/>
+    <text x="60" y="25" class="text" font-weight="bold" text-anchor="middle">MAX98357</text>
+    <text x="60" y="45" class="text-sm" text-anchor="middle">音频功放</text>
+    
+    <circle cx="0" cy="40" r="5" class="pin"/><text x="15" y="45" class="text">VIN / VDD</text>
+    <circle cx="0" cy="60" r="5" class="pin"/><text x="15" y="65" class="text">GND</text>
+    <circle cx="0" cy="80" r="5" class="pin"/><text x="15" y="85" class="text">LRC</text>
+    <circle cx="0" cy="100" r="5" class="pin"/><text x="15" y="105" class="text">BCLK</text>
+    <circle cx="0" cy="120" r="5" class="pin"/><text x="15" y="125" class="text">DIN</text>
+    
+    <circle cx="120" cy="60" r="5" class="pin"/><text x="105" y="65" class="text" text-anchor="end">OUT +</text>
+    <circle cx="120" cy="100" r="5" class="pin"/><text x="105" y="105" class="text" text-anchor="end">OUT -</text>
+  </g>
+
+  <g transform="translate(850, 460)">
+    <rect width="70" height="90" class="board" fill="#111" stroke="#555"/>
+    <text x="35" y="25" class="text" font-weight="bold" text-anchor="middle">1811</text>
+    <text x="35" y="45" class="text" text-anchor="middle">喇叭</text>
+    <circle cx="0" cy="30" r="5" class="pin"/><text x="15" y="35" class="text">红 (+)</text>
+    <circle cx="0" cy="70" r="5" class="pin"/><text x="15" y="75" class="text">黑 (-)</text>
+  </g>
+
+</svg>
