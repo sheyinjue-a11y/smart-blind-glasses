@@ -1,5 +1,9 @@
 # 启明 · 智能助盲眼镜
 
+本项目基于帆哥的开源项目 [AI-FanGe/OpenAIglasses_for_Navigation](https://github.com/AI-FanGe/OpenAIglasses_for_Navigation) 进行复现，并在此基础上加入少量新功能。原项目及相关第三方代码的说明与许可证予以保留。
+
+**项目未完成。** 本仓库保存学习复现过程与阶段性成果，仍有功能开发、模型桥接及软硬件联调工作未完成，不能视为可直接使用的完整产品。
+
 保存本项目的手机端、ESP32 固件、Python 参考实现、模型、三维外壳设计以及参赛材料。
 
 | 目录 | 内容 |
